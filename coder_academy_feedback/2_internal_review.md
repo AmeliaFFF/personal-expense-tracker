@@ -6,7 +6,11 @@ Before seeking feedback from other teams, we conducted an internal review of the
 
 ## `test_app.py`
 
-The feedback given for this file focuses specifically on the clarity and completeness of the docstrings.
+- **Date received:** 05/10/2025
+- **Purpose:** Feedback for this file focused on improving the clarity and completeness of the test function docstrings.
+- **Outcome:** The feedback has been considered, and the docstrings in `test_app.py` have been updated to provide further detail. See the “Updated docstring” section under each test below for the specific changes implemented.
+
+---
 
 #### 1. `test_transaction_creation_expense()`
 
@@ -30,6 +34,13 @@ def test_transaction_creation_expense():
 - This test ensures that when an expense transaction is created:
   - Attributes (date, category, description, amount) are stored correctly
   - The transaction categorises itself as an expense using ‘is_expense()’
+
+**Updated docstring:**
+
+```python
+def test_transaction_creation_expense():
+    """Verify that an expense transaction is created with correct attributes and is recognised as an expense."""
+```
 
 ---
 
@@ -56,6 +67,13 @@ def test_transaction_creation_income():
   - Attributes (date, category, description, amount) are stored correctly
   - The transaction categorises itself as an income using ‘is_income()
 
+**Updated docstring:**
+
+```python
+def test_transaction_creation_expense():
+    """Verify that an income transaction is created with correct attributes and is recognised as income."""
+```
+
 ---
 
 #### 3. `test_transaction_default_type()`
@@ -76,6 +94,13 @@ def test_transaction_default_type():
 
 - This test validates that transactions default to 'expense' when no type is specified.
 - This ensures the Transaction class assigns 'expense' as the default type and that (is_expense / is_income) behave consistently.
+
+**Updated docstring:**
+
+```python
+def test_transaction_creation_expense():
+    """Ensure transactions default to "expense" when no type is specified, and related checks behave consistently."""
+```
 
 ---
 
@@ -100,6 +125,13 @@ def test_transaction_signed_amount():
   - Expense transactions return a negative value.
 - This is crucial for accurate balance calculations.
 
+**Updated docstring:**
+
+```python
+def test_transaction_creation_expense():
+    """Check that income returns a positive signed amount and expenses return a negative signed amount, ensuring accurate balance calculations."""
+```
+
 ---
 
 #### 5. `test_transaction_invalid_date()`
@@ -118,6 +150,13 @@ def test_transaction_invalid_date():
 - This test confirms that invalid date formats are rejected.
 - This test should raise a ValueError when the date is not provided in the expected 'DD/MM/YYYY' format.
 
+**Updated docstring:**
+
+```python
+def test_transaction_creation_expense():
+    """Verify that invalid date formats raise a ValueError indicating the required DD/MM/YYYY format."""
+```
+
 ---
 
 #### 6. `test_transaction_invalid_type()`
@@ -135,5 +174,12 @@ def test_transaction_invalid_type():
 
 - This test confirms that invalid transaction types raise a ValueError.
 - The Transaction class should only accept 'income' or 'expense'. Any other value should trigger a ValueError to prevent invalid data.
+
+**Updated docstring:**
+
+```python
+def test_transaction_creation_expense():
+    """Confirm that invalid transaction types raise a ValueError, enforcing only "income" or "expense" as valid options."""
+```
 
 ---
