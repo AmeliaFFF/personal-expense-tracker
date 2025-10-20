@@ -4,8 +4,8 @@ Before seeking feedback from other teams, we conducted an internal review of the
 
 **Click on the links below to go to the associated review.**
 
-- [Review 1: test_app.py](#review-1-test_apppy) (_reviewed by Brando_)
-- [Review 2: app.py](#review-2-apppy) (_reviewed by Brando_)
+- [Review 1: test_app.py](#review-1-test_apppy) (_reviewed by Brando on 05/10/2025_)
+- [Review 2: app.py](#review-2-apppy) (_reviewed by Brando on 19/10/2025_)
 
 ---
 
