@@ -7,6 +7,8 @@ Before seeking feedback from other teams, we conducted an internal review of the
 - [Review 1: test_app.py](#review-1-test_apppy) (_reviewed by Brando_)
 - [Review 2: app.py](#review-2-apppy) (_reviewed by Brando_)
 
+---
+
 ## Review 1: `test_app.py`
 
 - **Date received:** 05/10/2025
@@ -232,7 +234,9 @@ Attributes:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Represents a financial transaction with a date, category, description, amount, and type (income or expense).
+"""
 ```
 
 ---
@@ -273,7 +277,9 @@ Raises:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Validate that the given date string matches DD/MM/YYYY format, raising ValueError if invalid.
+"""
 ```
 
 ---
@@ -306,7 +312,9 @@ Returns:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Return the amount with the correct sign based on transaction type (positive for income or negative for expense).
+"""
 ```
 
 ---
@@ -336,7 +344,9 @@ Validate that transaction type equals ‘income’.
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Return True if the transaction is "income".
+"""
 ```
 
 ---
@@ -366,7 +376,9 @@ Validate that transaction type equals ‘expense’.
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Return True if the transaction is "expense".
+"""
 ```
 
 ---
@@ -398,7 +410,9 @@ Returns:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Return the transaction as a list [date, category, description, amount, type] for CSV writing.
+"""
 ```
 
 ---
@@ -445,7 +459,7 @@ Returns:
 **Updated docstring:**
 
 ```python
-# WIP
+# NO CHANGE
 ```
 
 ---
@@ -476,7 +490,9 @@ Transaction details formatted as a string
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Return a readable string with the transaction’s date, category, description, and signed amount.
+"""
 ```
 
 ---
@@ -515,7 +531,9 @@ Attributes:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Manage expense tracking by storing transactions, loading from/saving to CSV, and providing basic summaries.
+"""
 ```
 
 ---
@@ -552,7 +570,9 @@ Actions:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Add a new transaction and update the CSV file.
+"""
 ```
 
 ---
@@ -611,7 +631,9 @@ Actions:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Load transactions from the CSV file into memory, creating Transaction objects and skipping invalid rows.
+"""
 ```
 
 ---
@@ -671,7 +693,9 @@ Returns:
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Return summary statistics including totals for transactions, income, expenses, net balance, and categories.
+"""
 ```
 
 ---
@@ -712,7 +736,7 @@ Returns:
 **Updated docstring:**
 
 ```python
-# WIP
+# NO CHANGE
 ```
 
 ---
@@ -747,7 +771,9 @@ Handles keyboard interrupts gracefully and saves data before exiting.
 **Updated docstring:**
 
 ```python
-# WIP
+"""
+Run the main interactive CLI loop until the user exits.
+"""
 ```
 
 ---
