@@ -1,10 +1,13 @@
-# Internal Review
+# Internal Reviews
 
 Before seeking feedback from other teams, we conducted an internal review of the Personal Expense Tracker to identify areas for improvement and implement initial changes.
 
-**Review of the below files was provided by Brando.**
+**Click on the links below to go to the associated review.**
 
-## `test_app.py`
+- [Review 1: test_app.py](#review-1-test_apppy) (_reviewed by Brando_)
+- [Review 2: app.py](#review-2-apppy) (_reviewed by Brando_)
+
+## Review 1: `test_app.py`
 
 - **Date received:** 05/10/2025
 - **Purpose:** Feedback for this file focused on improving the clarity and completeness of the test function docstrings.
@@ -180,6 +183,300 @@ def test_transaction_invalid_type():
 ```python
 def test_transaction_creation_expense():
     """Confirm that invalid transaction types raise a ValueError, enforcing only "income" or "expense" as valid options."""
+```
+
+---
+
+## Review 2: `app.py`
+
+- **Date received:** 19/10/2025
+- **Purpose:** Feedback for this file focused on improving the clarity and completeness of the main application's docstrings.
+- **Outcome:** The feedback has been considered, and the docstrings in `app.py` have been updated to provide further detail. See the “Updated docstring” section under each test below for the specific changes implemented.
+
+---
+
+#### 1. `class Transaction: def __init__`
+
+**Original code:**
+
+```python
+class Transaction:
+    """Class to represent a financial transaction"""
+
+    def __init__(self, date: str, category: str, description: str, amount: float, transaction_type: str = "expense"):
+        self.date = self._validate_date(date)
+        self.category = category.strip().title()
+        self.description = description.strip()
+        self.amount = abs(float(amount))
+        self.transaction_type = transaction_type.lower()
+
+        # Validate transaction type
+        if self.transaction_type not in ["income", "expense"]:
+            raise ValueError("Transaction type must be 'income' or 'expense'")
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Class to represent a financial transaction, such as an income or expense entry.
+Attributes:
+    date (str): The date of the transaction in DD/MM/YYYY format.
+    category (str): The category the transaction belongs to (e.g., Food, Salary).
+    description (str): A short description of the transaction.
+    amount (float): The value of the transaction amount.
+    transaction_type (str): Either 'income' or 'expense'.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 2. `class Transaction: def _validate_date`
+
+**Original code:**
+
+```python
+class Transaction:
+
+    ...
+
+    def _validate_date(self, date_str: str) -> str:
+        """Validate and format date string in the format DD/MM/YYYY"""
+        try:
+            datetime.strptime(date_str, "%d/%m/%Y")
+            return date_str
+        except ValueError:
+            raise ValueError("Date must be in DD/MM/YYYY format")
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Validate that a date string is in correct format.
+
+Arguments:
+    date_str (str): The date string to validate.
+Returns:
+    The validated and formatted date string in DD/MM/YYYY format.
+Raises:
+    ValueError: If the date format is invalid.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 3. `class Transaction: def get_signed_amount`
+
+**Original code:**
+
+```python
+class Transaction:
+
+    ...
+
+    def get_signed_amount(self) -> float:
+        """Return amount with proper sign: positive (+) for income or negative (-) for expense"""
+        return self.amount if self.transaction_type == "income" else -self.amount
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Return the transaction amount with correct sign based on transaction type.
+
+Returns:
+    float: Positive value for income, negative value for expense.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 4. `class Transaction: is_income`
+
+**Original code:**
+
+```python
+class Transaction:
+
+    ...
+
+    def is_income(self) -> bool:
+        """Check if this is an income transaction"""
+        return self.transaction_type == "income"
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Validate that transaction type equals ‘income’.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 5. `class Transaction: is_expense`
+
+**Original code:**
+
+```python
+class Transaction:
+
+    ...
+
+    def is_expense(self) -> bool:
+        """Check if this is an expense transaction"""
+        return self.transaction_type == "expense"
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Validate that transaction type equals ‘expense’.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 6. `class Transaction: to_list`
+
+**Original code:**
+
+```python
+class Transaction:
+
+    ...
+
+    def to_list(self) -> List:
+        """Convert transaction to list format for storage in CSV"""
+        return [self.date, self.category, self.description, self.amount, self.transaction_type]
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Convert transaction to list format for CSV storage
+Returns:
+    List: [date, category, description, amount, transaction_type]
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 7. `class Transaction: to_dict`
+
+**Original code:**
+
+```python
+class Transaction:
+
+    ...
+
+    def to_dict(self) -> Dict:
+        """Convert transaction to dictionary format"""
+        return {
+            'date': self.date,
+            'category': self.category,
+            'description': self.description,
+            'amount': self.amount,
+            'transaction_type': self.transaction_type,
+            'signed_amount': self.get_signed_amount()
+        }
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Convert transaction to dictionary format for analysis
+
+Returns:
+    Dict: {
+        'date': str,
+        'category': str,
+        'description': str,
+        'amount': float,
+        'transaction_type': str,
+        'signed_amount': float
+    }
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 8. `class Transaction: __str__`
+
+**Original code:**
+
+```python
+class Transaction:
+
+    ...
+
+    def __str__(self) -> str:
+        """String representation of transaction"""
+        sign = "+" if self.is_income() else "-"
+        return f"{self.date} | {self.category} | {self.description} | {sign}${self.amount:.2f}"
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Transaction details formatted as a string
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
 ```
 
 ---
