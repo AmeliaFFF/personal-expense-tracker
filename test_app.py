@@ -3,7 +3,7 @@ from app import Transaction, ExpenseTracker, ExpenseTrackerCLI
 from datetime import datetime
 
 def test_transaction_creation_expense():
-    """Test for creating a basic expense transaction"""
+    """Verify that an expense transaction is created with correct attributes and is recognised as an expense."""
     transaction = Transaction("01/07/2025", "Food", "Lunch at cafe", 15.50, "expense")
     
     assert transaction.date == "01/07/2025"
@@ -13,7 +13,7 @@ def test_transaction_creation_expense():
     assert transaction.is_expense() == True
 
 def test_transaction_creation_income():
-    """Test for creating a basic income transaction"""
+    """Verify that an income transaction is created with correct attributes and is recognised as income."""
     transaction = Transaction("14/07/2025", "Wages", "Pay from work", 1000.00, "income")
     
     assert transaction.date == "14/07/2025"
@@ -23,7 +23,7 @@ def test_transaction_creation_income():
     assert transaction.is_income() == True
 
 def test_transaction_default_type():
-    """Test that default transaction type is expense"""
+    """Ensure transactions default to "expense" when no type is specified, and related checks behave consistently."""
     transaction = Transaction("02/07/2025", "Takeaway", "Coffee", 7.50)
     
     assert transaction.transaction_type == "expense"
@@ -31,7 +31,7 @@ def test_transaction_default_type():
     assert transaction.is_income() == False
 
 def test_transaction_signed_amount():
-    """Test that signed amounts work correctly for income(+) and expense(-) transactions"""
+    """Check that income returns a positive signed amount and expenses return a negative signed amount, ensuring accurate balance calculations."""
     income = Transaction("14/06/2025", "Wages", "Pay from work", 1000.00, "income")
     assert income.get_signed_amount() == +1000.00
     
@@ -39,11 +39,11 @@ def test_transaction_signed_amount():
     assert expense.get_signed_amount() == -73.00
 
 def test_transaction_invalid_date():
-    """Test that invalid date formats raise an error"""
+    """Verify that invalid date formats raise a ValueError indicating the required DD/MM/YYYY format."""
     with pytest.raises(ValueError, match="Date must be in DD/MM/YYYY format"):
         Transaction("2025-01-25", "Food", "Restaurant dinner", 37.80, "expense")
 
 def test_transaction_invalid_type():
-    """Test that invalid transaction types raise an error"""
+    """Confirm that invalid transaction types raise a ValueError, enforcing only "income" or "expense" as valid options."""
     with pytest.raises(ValueError, match="Transaction type must be 'income' or 'expense'"):
         Transaction("31/07/2025", "Groceries", "Shopping for dinner", 34.56, "food")

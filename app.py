@@ -6,7 +6,7 @@ from tabulate import tabulate
 
 
 class Transaction:
-    """Class to represent a financial transaction"""
+    """Represents a financial transaction with a date, category, description, amount, and type (income or expense)."""
     
     def __init__(self, date: str, category: str, description: str, amount: float, transaction_type: str = "expense"):
         self.date = self._validate_date(date)
@@ -20,7 +20,7 @@ class Transaction:
             raise ValueError("Transaction type must be 'income' or 'expense'")
     
     def _validate_date(self, date_str: str) -> str:
-        """Validate and format date string in the format DD/MM/YYYY"""
+        """Validate that the given date string matches DD/MM/YYYY format, raising ValueError if invalid."""
         try:
             datetime.strptime(date_str, "%d/%m/%Y")
             return date_str
@@ -28,23 +28,23 @@ class Transaction:
             raise ValueError("Date must be in DD/MM/YYYY format")
     
     def get_signed_amount(self) -> float:
-        """Return amount with proper sign: positive (+) for income or negative (-) for expense"""
+        """Return the amount with the correct sign based on transaction type (positive for income or negative for expense)."""
         return self.amount if self.transaction_type == "income" else -self.amount
 
     def is_income(self) -> bool:
-        """Check if this is an income transaction"""
+        """Return True if the transaction is "income"."""
         return self.transaction_type == "income"
 
     def is_expense(self) -> bool:
-        """Check if this is an expense transaction"""
+        """Return True if the transaction is "expense"."""
         return self.transaction_type == "expense"
    
     def to_list(self) -> List:
-        """Convert transaction to list format for storage in CSV"""
+        """Return the transaction as a list [date, category, description, amount, type] for CSV writing."""
         return [self.date, self.category, self.description, self.amount, self.transaction_type]
     
     def to_dict(self) -> Dict:
-        """Convert transaction to dictionary format"""
+        """Convert transaction to dictionary format."""
         return {
             'date': self.date,
             'category': self.category,
@@ -55,13 +55,13 @@ class Transaction:
         }
     
     def __str__(self) -> str:
-        """String representation of transaction"""
+        """Return a readable string with the transaction’s date, category, description, and signed amount."""
         sign = "+" if self.is_income() else "-"
         return f"{self.date} | {self.category} | {self.description} | {sign}${self.amount:.2f}"
 
 
 class ExpenseTracker:
-    """Main class to manage expense tracking functionality"""
+    """Manage expense tracking by storing transactions, loading from/saving to CSV, and providing basic summaries."""
     
     def __init__(self, csv_file: str = "transactions.csv"):
         self.csv_file = csv_file
@@ -72,12 +72,12 @@ class ExpenseTracker:
         self.load_transactions()
 
     def add_transaction(self, transaction: Transaction) -> None:
-        """Add a new transaction to the tracker"""
+        """Add a new transaction and update the CSV file."""
         self.transactions.append(transaction)
         self.save_transactions()
     
     def load_transactions(self) -> None:
-        """Load transactions from CSV file"""
+        """Load transactions from the CSV file into memory, creating Transaction objects and skipping invalid rows."""
         try:
             if os.path.exists(self.csv_file):
                 with open(self.csv_file, 'r', newline='', encoding='utf-8') as file:
@@ -103,7 +103,7 @@ class ExpenseTracker:
             print(f"Error loading transactions: {e}")
     
     def save_transactions(self) -> None:
-        """Save all transactions to CSV file"""
+        """Save all transactions to CSV file."""
         try:
             with open(self.csv_file, 'w', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
@@ -114,15 +114,15 @@ class ExpenseTracker:
             print(f"Error saving transactions: {e}")
     
     def get_all_transactions(self) -> List[Transaction]:
-        """Get all transactions"""
+        """Get all transactions."""
         return self.transactions.copy()
     
     def get_transactions_by_category(self, category: str) -> List[Transaction]:
-        """Get transactions filtered by category"""
+        """Get transactions filtered by category."""
         return [t for t in self.transactions if t.category.lower() == category.lower()]
     
     def get_transactions_by_date_range(self, start_date: str, end_date: str) -> List[Transaction]:
-        """Get transactions within a date range"""
+        """Get transactions within a date range."""
         try:
             # Validate date format and convert to datetime for comparison
             start_dt = datetime.strptime(start_date, "%d/%m/%Y")
@@ -140,15 +140,15 @@ class ExpenseTracker:
             raise ValueError("Dates must be in DD/MM/YYYY format")
     
     def get_transactions_by_type(self, transaction_type: str) -> List[Transaction]:
-        """Get transactions by type (income or expense)"""
+        """Get transactions by type (income or expense)."""
         return [t for t in self.transactions if t.transaction_type == transaction_type.lower()]
     
     def get_categories(self) -> List[str]:
-        """Get unique categories from all transactions"""
+        """Get unique categories from all transactions."""
         return list(set(t.category for t in self.transactions))
     
     def get_summary_stats(self) -> Dict:
-        """Get summary statistics"""
+        """Return summary statistics including totals for transactions, income, expenses, net balance, and categories."""
         if not self.transactions:
             return {
                 'total_transactions': 0,
@@ -173,7 +173,7 @@ class ExpenseTracker:
         }
    
     def get_category_summary(self) -> Dict[str, Dict]:
-        """Get summary by category"""
+        """Get summary by category."""
         category_summary = {}
         
         for category in self.get_categories():
@@ -192,13 +192,13 @@ class ExpenseTracker:
 
 
 class ExpenseTrackerCLI:
-    """Command Line Interface for the Expense Tracker"""
+    """Command Line Interface for the Expense Tracker."""
     
     def __init__(self):
         self.tracker = ExpenseTracker()
     
     def display_menu(self) -> None:
-        """Display the main menu options"""
+        """Display the main menu options."""
         print("\n" + "="*50)
         print("$ Personal Expense Tracker $")
         print("="*50)
@@ -212,7 +212,7 @@ class ExpenseTrackerCLI:
         print("="*50)
     
     def get_user_choice(self) -> str:
-        """Get and validate user menu choice"""
+        """Get and validate user menu choice."""
         while True:
             try:
                 choice = input("Enter your choice (1-7): ").strip()
@@ -225,7 +225,7 @@ class ExpenseTrackerCLI:
                 exit()
     
     def get_date_input(self, prompt: str) -> str:
-        """Get and validate date input from user"""
+        """Get and validate date input from user."""
         while True:
             try:
                 date_str = input(prompt).strip()
@@ -243,7 +243,7 @@ class ExpenseTrackerCLI:
                 exit()
     
     def get_amount_input(self, prompt: str) -> float:
-        """Get and validate amount input from user"""
+        """Get and validate amount input from user."""
         while True:
             try:
                 amount_str = input(prompt).strip()
@@ -259,7 +259,7 @@ class ExpenseTrackerCLI:
                 exit()
     
     def get_transaction_type(self) -> str:
-        """Get transaction type from user"""
+        """Get transaction type from user."""
         while True:
             try:
                 print("\nTransaction Type:")
@@ -278,7 +278,7 @@ class ExpenseTrackerCLI:
                 exit()
     
     def add_transaction(self) -> None:
-        """Add a new transaction through CLI"""
+        """Add a new transaction through CLI."""
         print("\n" + "-" * 50)
         print("Add New Transaction")
         print("-" * 50)
@@ -307,7 +307,7 @@ class ExpenseTrackerCLI:
             print(f"Error adding transaction: {e}")
     
     def display_transactions(self, transactions: List[Transaction], title: str = "Transactions") -> None:
-        """Display transactions in a formatted table"""
+        """Display transactions in a formatted table."""
         if not transactions:
             print(f"\n{title}")
             print("No transactions found.")
@@ -356,12 +356,12 @@ class ExpenseTrackerCLI:
                 print(f"Net Balance:    ${abs(net_balance):.2f}-")
     
     def view_all_transactions(self) -> None:
-        """View all transactions"""
+        """View all transactions."""
         transactions = self.tracker.get_all_transactions()
         self.display_transactions(transactions, "All Transactions")
     
     def view_transactions_by_category(self) -> None:
-        """View transactions filtered by category"""
+        """View transactions filtered by category."""
         categories = self.tracker.get_categories()
         
         if not categories:
@@ -395,7 +395,7 @@ class ExpenseTrackerCLI:
             print(f"Error viewing transactions by category: {e}")
     
     def view_transactions_by_date_range(self) -> None:
-        """View transactions within a date range"""
+        """View transactions within a date range."""
         try:
             print("\n" + "-" * 50)
             print("Enter Date Range")
@@ -414,7 +414,7 @@ class ExpenseTrackerCLI:
             print(f"Error viewing transactions by date range: {e}")
     
     def view_summary_statistics(self) -> None:
-        """Display summary statistics"""
+        """Display summary statistics."""
         stats = self.tracker.get_summary_stats()
         
         print("\n" + "-" * 50)
@@ -430,7 +430,7 @@ class ExpenseTrackerCLI:
             print(f"Category List: {', '.join(stats['categories'])}")
     
     def view_category_summary(self) -> None:
-        """Display category summary"""
+        """Display category summary."""
         category_summary = self.tracker.get_category_summary()
         
         if not category_summary:
@@ -462,7 +462,7 @@ class ExpenseTrackerCLI:
         print(tabulate(data, headers=headers, tablefmt="grid"))
     
     def run(self) -> None:
-        """Main application loop"""
+        """Run the main interactive CLI loop until the user exits."""
         print("Welcome to the Personal Expense Tracker!")
         
         while True:
