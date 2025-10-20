@@ -675,3 +675,79 @@ Returns:
 ```
 
 ---
+
+#### 13. `class ExpenseTrackerCLI: def display_transactions`
+
+**Original code:**
+
+```python
+class ExpenseTrackerCLI:
+
+    ...
+
+    def display_transactions(self, transactions: List[Transaction], title: str = "Transactions") -> None:
+        """Display transactions in a formatted table"""
+        if not transactions:
+            print(f"\n{title}")
+            print("No transactions found.")
+            return
+    ...
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Display a list of transactions in a formatted table using tabulate.
+
+Arguments:
+    transactions (List[Transaction]): List of transactions to display.
+    title (str, optional): Header title for the display. Defaults to "Transactions".
+
+Returns:
+    None
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 14. `class ExpenseTrackerCLI: def run`
+
+**Original code:**
+
+```python
+class ExpenseTrackerCLI:
+
+    ...
+
+    def run(self) -> None:
+        """Main application loop"""
+        print("Welcome to the Personal Expense Tracker!")
+
+    ...
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Initialise the interactive CLI loop for the Expense Tracker.
+
+Continuously displays the main menu until the user exits.
+Handles keyboard interrupts gracefully and saves data before exiting.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
