@@ -311,7 +311,7 @@ Returns:
 
 ---
 
-#### 4. `class Transaction: is_income`
+#### 4. `class Transaction: def is_income`
 
 **Original code:**
 
@@ -341,7 +341,7 @@ Validate that transaction type equals ‘income’.
 
 ---
 
-#### 5. `class Transaction: is_expense`
+#### 5. `class Transaction: def is_expense`
 
 **Original code:**
 
@@ -371,7 +371,7 @@ Validate that transaction type equals ‘expense’.
 
 ---
 
-#### 6. `class Transaction: to_list`
+#### 6. `class Transaction: def to_list`
 
 **Original code:**
 
@@ -403,7 +403,7 @@ Returns:
 
 ---
 
-#### 7. `class Transaction: to_dict`
+#### 7. `class Transaction: def to_dict`
 
 **Original code:**
 
@@ -450,7 +450,7 @@ Returns:
 
 ---
 
-#### 8. `class Transaction: __str__`
+#### 8. `class Transaction: def __str__`
 
 **Original code:**
 
@@ -470,6 +470,201 @@ class Transaction:
 ```python
 """
 Transaction details formatted as a string
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 9. `class ExpenseTracker: def __init__`
+
+**Original code:**
+
+```python
+class ExpenseTracker:
+    """Main class to manage expense tracking functionality"""
+
+    def __init__(self, csv_file: str = "transactions.csv"):
+        self.csv_file = csv_file
+        self.transactions: List[Transaction] = []
+        self.csv_headers = ["date", "category", "description", "amount", "transaction_type"]
+
+        # Load existing transactions on startup
+        self.load_transactions()
+```
+
+**Suggested improvement:**
+
+```python
+"""
+This class uses composition — it contains multiple Transaction instances
+and provides functionality for saving, loading, filtering, and summarizing them.
+
+Attributes:
+    csv_file (str): The filename used for data storage.
+    transactions (List[Transaction]): List of all transactions in memory.
+    csv_headers (List[str]): Column headers for CSV export.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 10. `class ExpenseTracker: def add_transaction`
+
+**Original code:**
+
+```python
+class ExpenseTracker:
+
+    ...
+
+    def add_transaction(self, transaction: Transaction) -> None:
+        """Add a new transaction to the tracker"""
+        self.transactions.append(transaction)
+        self.save_transactions()
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Adds a new transaction and inputs it to the CSV file.
+
+Arguments:
+    transaction (Transaction): The transaction object to add.
+
+Actions:
+    Writes the updated transaction list to the CSV file.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 11. `class ExpenseTracker: def load_transactions`
+
+**Original code:**
+
+```python
+class ExpenseTracker:
+
+    ...
+
+    def load_transactions(self) -> None:
+        """Load transactions from CSV file"""
+        try:
+            if os.path.exists(self.csv_file):
+                with open(self.csv_file, 'r', newline='', encoding='utf-8') as file:
+                    reader = csv.DictReader(file)
+                    for row in reader:
+                        try:
+                            transaction = Transaction(
+                                date=row['date'],
+                                category=row['category'],
+                                description=row['description'],
+                                amount=float(row['amount']),
+                                transaction_type=row['transaction_type']
+                            )
+                            self.transactions.append(transaction)
+                        except (ValueError, KeyError) as e:
+                            print(f"Warning: Skipping invalid transaction in CSV: {e}")
+                            continue
+                print("\n" + "=" * 50 + "\n")
+                print(f"Loaded {len(self.transactions)} transactions from {self.csv_file}" + "\n")
+            else:
+                print(f"No existing data file found. Now creating a new file...")
+        except Exception as e:
+            print(f"Error loading transactions: {e}")
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Loads transactions from the CSV file into memory.
+
+Reads each row, creates a Transaction instance, and appends it to `self.transactions`.
+Skips rows that fail validation.
+
+Actions:
+    Prints loading status and warnings to the console.
+    Modifies `self.transactions` in-place.
+"""
+```
+
+**Updated docstring:**
+
+```python
+# WIP
+```
+
+---
+
+#### 12. `class ExpenseTracker: def get_summary_stats`
+
+**Original code:**
+
+```python
+class ExpenseTracker:
+
+    ...
+
+    def get_summary_stats(self) -> Dict:
+        """Get summary statistics"""
+        if not self.transactions:
+            return {
+                'total_transactions': 0,
+                'total_income': 0,
+                'total_expenses': 0,
+                'net_balance': 0,
+                'categories': []
+            }
+
+        income_transactions = self.get_transactions_by_type("income")
+        expense_transactions = self.get_transactions_by_type("expense")
+
+        total_income = sum(t.amount for t in income_transactions)
+        total_expenses = sum(t.amount for t in expense_transactions)
+
+        return {
+            'total_transactions': len(self.transactions),
+            'total_income': total_income,
+            'total_expenses': total_expenses,
+            'net_balance': total_income - total_expenses,
+            'categories': self.get_categories()
+        }
+```
+
+**Suggested improvement:**
+
+```python
+"""
+Compute overall summary of all transactions.
+
+Returns:
+    Dict: {
+        'total_transactions': int,
+        'total_income': float,
+        'total_expenses': float,
+        'net_balance': float,
+        'categories': List[str]
+    }
 """
 ```
 
