@@ -224,13 +224,47 @@ The action items from the "What could be improved?" section are:
 
 ### Log #7
 
-**Feedback Provided by:**
+**Feedback Provided by:** Amelia
 
-**Date of Feedback:**
+**Date of Feedback:** 24/10/2025
 
 **Feedback Type:** Given
 
-**Project:** Team 2
+**Project:** [Gardening Application](https://github.com/zalirae/gardening-application) - Team 2
+
+**Feedback:**  
+*(e.g., What worked, what didn't? How could we improve functionality? Is there something you wanted but wasn't there?)*
+
+For my review, I looked at the the `README.md` file. Overall, I really like this document! I have included some specific feedback below:
+
+- What worked:
+    - Quickstart guide: I like how clear and easy to follow this section is, and I like your use of code blocks. I think it's great that you include the different instructions for each operating system.
+    - Features: I LOVE that you included a GIF of the application in action! This is very cool to see how it runs. As a user, it's great to see what to expect up front (and as a visual learner, this is really helpful for me to better understand what the application is).
+    - Data & Save File: I like how you include information about how the data is stored, and show what that file and data looks like. This is comforting to know I can check my save data so I don't lose my progress!
+    - Project Structure: I like how you've broken this down visually, with the code comments explaining the purpose of each file. It's nice to know what each part does.
+    - Testing: Similar to the Quickstart, I like how easy this is to follow, and how the information is presented clearly. The "useful testing commands" code block is especially helpful with those code comments explaining the commands.
+
+- What could be improved:
+    - The order of the README could be reorganised to flow better by grouping related sections together, e.g.:
+        - Overview and Features (e.g., the opening section you have at the top + the "Features" section).
+        - Usage (e.g., the "Quickstart" section and the "Testing" section).
+        - Internal function (e.g., "How It Works", "Data & Save File", "Project Structure", etc.)
+        - Legal/credits (e.g, "Ethical & Accessibility Considerations", "Licenses", "Contributors" and "References")
+    - The "Packages and Dependencies" and "How It Works" sections could be combined, as there is some duplicated information about dependencies/imported libraries across these sections.
+    - The "Licences" section copy/pastes the entire Colorama License. This text could be briefly summarised instead, with a link to the official license. That would reduce the length of the README, and also cover you if Colorama choose to update their license (i.e., if you're linking to the source content, it'll always be linking to the latest version, whereas a copy/pasted version could go out of date and become incorrect).
+    
+- What did I want that wasn't there?:
+    - More examples of the application in use (this could be included as an additional file, if you don't want to bloat the README too much). As mentioned, I love that you've included the GIF! I think you could include some code blocks with copy/pasted terminal output in there too. That way, people can look through the text at their own pace (i.e., reading a code block) instead of watching the gif multiple times.
+
+**Suggestions/Actions Needed:**  
+The action items from my feedback above are:
+1. Update the order of the README to group like with like (e.g., Overview and Features, Usage, Internal Function, Legal/Credits).
+2. Combine the "Packages and Dependencies" and "How It Works" sections to remove duplicated information.
+3. Summarise the Colorama license and link to the official Colorama license instead.
+4. Include additional examples of the application in use. These could be in the form of code blocks with copy/pasted terminal output, and screenshots. Providing different forms of this content enables readers to consume it in their preferred way.
+
+**References (if required):**  
+*N/A*
 
 ---
 
