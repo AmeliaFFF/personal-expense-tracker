@@ -224,6 +224,35 @@ The action items from the "What could be improved?" section are:
 
 ### Log #7
 
+**Feedback Provided by:** Brando Smith
+
+**Date of Feedback:** 24/10/2025
+
+**Feedback Type:** Given
+
+**Project:** [Gardening Application](https://github.com/zalirae/gardening-application) - Team 2
+
+**Feedback:**  
+*(e.g., What worked, what didn't? How could we improve functionality? Is there something you wanted but wasn't there?)*
+
+The presentation of this document is immaculate, and the explanation of each section flows so well, and articulates the purpose/vision/usage of the app perfectly. I also liked the section on accessibility, I think that was done really well.
+
+The only feedback I have, is that the README file doesn’t explicitly show the arguments, parameters and expected returned values for classes, methods, functions (only pytests) – it summarises them (which actually looks nicer), but it could have included some more explicit code blocks so show users how this app is functioning.
+
+In the code source file, some of the code comments could have also had further explanation – the two section then would have complimented each other well.
+
+**Suggestions/Actions Needed:**  
+
+- Update the README file to include code blocks explaining arguments, parameters and returned values
+- Update code comments to provide a deeper understanding of how classes, functions and methods work
+
+**References (if required):**  
+*N/A*
+
+---
+
+### Log #8
+
 **Feedback Provided by:** Amelia
 
 **Date of Feedback:** 24/10/2025
@@ -265,17 +294,5 @@ The action items from my feedback above are:
 
 **References (if required):**  
 *N/A*
-
----
-
-### Log #8
-
-**Feedback Provided by:**
-
-**Date of Feedback:**
-
-**Feedback Type:** Given
-
-**Project:** Team 2
 
 ---
