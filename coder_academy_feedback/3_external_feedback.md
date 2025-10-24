@@ -27,7 +27,7 @@ The team has added the below additional field under each log:
 
 ---
 
-## Feedback Received from other Teams
+## Feedback Received from Other Teams
 
 ### Log #1
 
@@ -151,7 +151,7 @@ Adding a troubleshooting section would make the README even more user-friendly, 
 
 ---
 
-## Feedback Provided to other Teams
+## Feedback Provided to Other Teams
 
 ### Log #5
 
@@ -180,19 +180,45 @@ The only improvements I would suggest are superficial in nature:
 
 ### Log #6
 
-**Feedback Provided by:**
+**Feedback Provided by:** Amelia
 
-**Date of Feedback:**
+**Date of Feedback:** 24/10/2025
 
 **Feedback Type:** Given
 
 **Project:** [Perilous Python](https://github.com/tamarabarnes/ISK1001-Assessment_3.git) - Team 3
 
-**What worked well?:**
+**What worked well?:**  
+For my review, I looked at `readme.md` and `updated_readme.md`. There is a huge difference between the 2 documents - I love how much your team worked on improving this! Here are some call outs for things I really liked in the `updated_readme.md` document:
+- Clearly laid out and well formatted document.
+- "Features of the Game" gives a nice overview of what to expect when playing this game.
+- Easy to follow "Setup & Installation" guide.
+- The screenshot included in the "Map & Movement" section (under "How to Play") is a great visual aid and helps with understanding the rest of the instructions.
+- The "Ethical Considerations" section is excellent - very comprehensive!
+- The "Libraries Utilised" section was interesting to learn more about the native Python libraries and how they can be used.
+- The "Future Development" section is very cool to see what you have planned for future iterations!
 
-**What could be improved?:**
+**What could be improved?:**  
+Overall, the `updated_readme.md` document is a huge improvement to the original `readme.md`. I can see that your team put a lot of thought into this. Therefore, the suggestions I have are minimal:
+- Setup & Installation - Installation Steps:
+    - Step 3 is to navigate to the project's containing folder. 
+    - The command provided for this is `cd path/to/project/Python_RPG/test/main.py` (this path is for the file itself).
+    - This should to be updated to `cd path/to/project/Python_RPG/test` (i.e., remove `main.py` from the end).
+- How to Play:
+    - This section would benefit from having some screenshots or code blocks of the terminal output (i.e., example gameplay).
+    - If wanting to keep the readme streamlined, you could create an additional file (like a "Visual Guide") that shows the example gameplay.
+    - This would assist users in understanding the expected output, which is useful for verifying the game is running as intended.
+    - It could also assist in making the game more enjoyable, as the user can get a better idea of what to expect (e.g., pacing of the game, combat style, etc.) before they start playing the game itself.
+    - Having a visual guide could also be useful for marketing purposes (i.e., being able to visually show what your application does may entice more people to want to play).
+- Example Code Documentation:
+    - I really like how you've explained a function and class in here, and included things like the purpose, usage, etc.
+    - I would love if you included some more examples, as they're very interesting to read!
 
-**Suggestions/Actionable Ideas:**
+**Suggestions/Actionable Ideas:**  
+The action items from the "What could be improved?" section are:
+1. Update the provided command in step 3 of the "Installation Steps" section (under "Setup & Installation").
+2. Create some sort of visual guide (either screenshots or code blocks) showing example gameplay.
+3. Include more code explanations under the "Example Code Documentation" section.
 
 ---
 
